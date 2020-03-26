@@ -77,13 +77,12 @@ const STORE = {
 };
 
 function App (){
+	const lists = STORE.lists.map((list) => (
+		<List cardIds={list.cardIds} cards={STORE['allCards']} header={list.header} key={list.id} />
+	));
 	return (
 		<div className='App'>
-			<div className='listContainer'>
-				{STORE.lists.map((list) => (
-					<List list={list.cardIds} cards={STORE['allCards']} header={list.header} key={list.id} />
-				))}
-			</div>
+			<div className='listContainer'>{lists}</div>
 		</div>
 	);
 }
