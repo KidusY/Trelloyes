@@ -1,23 +1,19 @@
 import React from 'react';
-import "./list-style.css";
-import Card from '../card/card'
-
+import './list-style.css';
+import Card from '../card/card';
 
 const List = (props) => {
-   const cards = props.cardIds.map((id) => <Card card={props.cards[id]} key={id} />)
-    return( <div className='list'>
+	const cards = props.cardIds.map((id) => <Card card={props.cards[id]} key={id} delCard={props.delCard} />);
 
-        <header><h1>{props.header}</h1></header>
-        {  cards  }
-
-    </div>
-    )
-       
-
-
+	return (
+		<div className='list'>
+			<button onClick={() => props.addCard(props.id)}> ADD Random Card </button>
+			<header>
+				<h1>{props.header}</h1>
+			</header>
+			{cards}
+		</div>
+	);
 };
 
-List.defaultProps = {
-    cards:[]
-}
 export default List;
